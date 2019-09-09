@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="1200.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FXController">
+   <children>
+      <ScrollPane fx:id="mapScroll" centerShape="false" focusTraversable="false" hmax="10.0" hvalue="5.0" layoutX="10.0" layoutY="10.0" pannable="true" prefHeight="550.0" prefWidth="760.0" scaleShape="false" vmax="10.0" vvalue="5.0">
+         <content>
+            <Pane fx:id="mapPane" prefHeight="3334.0" prefWidth="5000.0">
+               <children>
+                  <ImageView fx:id="mapView" fitHeight="3334.0" fitWidth="5000.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </Pane>
+         </content>
+      </ScrollPane>
+      <Pane fx:id="ContolPane" layoutX="770.0" prefHeight="570.0" prefWidth="430.0" style="-fx-background-color: black;">
+         <children>
+            <TextArea fx:id="textFeedBackRoute" editable="false" layoutX="220.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white; -fx-border-color: black;" wrapText="true" />
+            <TextArea fx:id="waypointTextFeedBack" editable="false" layoutX="220.0" layoutY="210.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white; -fx-border-color: black;" wrapText="true" />
+            <Button layoutX="10.0" layoutY="185.0" mnemonicParsing="false" onAction="#handleFindRouteButton" prefWidth="200.0" style="-fx-background-color: white;" text="Find Route" />
+            <ComboBox fx:id="start" layoutX="10.0" layoutY="40.0" prefWidth="200.0" style="-fx-background-color: white;" />
+            <ComboBox fx:id="destination" layoutX="10.0" layoutY="85.0" prefWidth="200.0" style="-fx-background-color: white;" />
+            <ComboBox fx:id="routeOption" layoutX="10.0" layoutY="130.0" prefWidth="200.0" style="-fx-background-color: white;" />
+            <ComboBox fx:id="waypoints" layoutX="10.0" layoutY="235.0" prefWidth="200.0" style="-fx-background-color: white;" />
+            <Button layoutX="10.0" layoutY="285.0" mnemonicParsing="false" onAction="#handleAddWaypointButton" prefWidth="200.0" style="-fx-background-color: white;" text="Add Waypoint" />
+            <Button layoutX="10.0" layoutY="385.0" mnemonicParsing="false" onAction="#handleAddAvoidepointButton" prefWidth="200.0" style="-fx-background-color: white;" text="Add Avoidpoint" />
+            <TextArea fx:id="avoidTextFeedBack" editable="false" layoutX="220.0" layoutY="310.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: white; -fx-border-color: black;" wrapText="true" />
+            <ComboBox fx:id="avoidence" layoutX="10.0" layoutY="336.0" prefWidth="200.0" style="-fx-background-color: white;" />
+            <Button layoutX="10.0" layoutY="520.0" mnemonicParsing="false" onAction="#handleShowAllRoutesButton" prefWidth="200.0" style="-fx-background-color: white;" text="Show All Routes" />
+            <Slider fx:id="maxRoutes" layoutX="10.0" layoutY="460.0" max="10.0" value="5.0" />
+            <Label fx:id="sliderValue" layoutX="178.0" layoutY="460.0" text="5" textFill="WHITE" />
+            <Button layoutX="220.0" layoutY="520.0" mnemonicParsing="false" onAction="#handleRestartButton" prefWidth="200.0" style="-fx-background-color: white;" text="Restart" />
+            <Label fx:id="distanceLabel" layoutX="293.0" layoutY="430.0" text="Distannce:" textFill="WHITE" />
+            <Label fx:id="difficultyLabel" layoutX="295.0" layoutY="490.0" text="Difficulty:" textFill="WHITE" />
+            <Label fx:id="dangerLabel" layoutX="299.0" layoutY="460.0" text="Danger:" textFill="WHITE" />
+            <Label layoutX="74.0" layoutY="10.0" text="Create Route:" textFill="WHITE" underline="true" />
+            <Label layoutX="10.0" layoutY="25.0" text="Start:" textFill="WHITE" />
+            <Label layoutX="10.0" layoutY="66.0" text="Destination:" textFill="WHITE" />
+            <Label layoutX="10.0" layoutY="111.0" text="Route Option:" textFill="WHITE" />
+            <Label layoutX="10.0" layoutY="214.0" text="WayPoints:" textFill="WHITE" />
+            <Label layoutX="10.0" layoutY="315.0" text="AvoidePoints:" textFill="WHITE" />
+            <Label layoutX="10.0" layoutY="439.0" text="Max Routes:" textFill="WHITE" />
+         </children>
+      </Pane>
+   </children>
+</Pane>

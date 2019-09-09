@@ -1,0 +1,86 @@
+package dijkstra;
+
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
+import org.junit.*;
+
+import graph.*;
+
+public class DijkstrasAlgorithmAvoidenceTest {
+	AdjacencyMatrix am;
+	Vertex a;
+	Vertex b;
+	Vertex c;
+	Vertex d;
+	GraphNode<Vertex> aNode;
+	GraphNode<Vertex> bNode;
+	GraphNode<Vertex> cNode;
+	GraphNode<Vertex> dNode;
+	LinkData aToB;
+	LinkData bToD;
+	LinkData aToC;
+	LinkData cToD;
+	/*A Representation of the graph being tested
+	 * (0,0)
+	 * (A)----20---(B)(0,20)
+	 *    \_		|
+	 *(10,10)(C)    |20
+	 *        \_    |
+	 *			\_  |
+	 *			  (D)(20,20)
+	 */
+	@Before
+	public void setUp() throws Exception {
+		am = new AdjacencyMatrix(4);
+		a = new Vertex("WinterFell",  0, 0);
+		b = new Vertex("CastleBlack",  20, 0);
+		c = new Vertex("DreadFort",  10, 10);
+		d = new Vertex("WhiteHarbour",  20, 20);
+		aNode = new GraphNode<Vertex>(a,am);
+		bNode = new GraphNode<Vertex>(b,am);
+		cNode = new GraphNode<Vertex>(c,am);
+		dNode = new GraphNode<Vertex>(d,am);
+		aToB = new LinkData("A<->B", 20, 20, 20);
+		bToD = new LinkData("B<->D", 20, 20, 20);
+		aToC = new LinkData("A<->C", 14, 14, 14);
+		cToD = new LinkData("C<->D", 14, 14, 14);
+		aNode.connectUndirected(bNode, aToB);
+		bNode.connectUndirected(dNode, bToD);
+		aNode.connectUndirected(cNode, aToC);
+		cNode.connectUndirected(dNode, cToD);
+	}
+
+	@Test
+	public void test() {
+		DijkstrasAlgorithmWayPoints daw = new DijkstrasAlgorithmWayPoints();
+		DijkstrasAlgorithm da = new DijkstrasAlgorithm();
+		ArrayList<Integer> avl = new ArrayList<>();
+		avl.add(2);
+		ArrayList<Integer> wpl = new ArrayList<>();
+		int[][] distanceGraph = da.retriveSpecificLinkData(am.getLinkData(), "Distance");
+		ArrayList<Integer> path = daw.dijkstrasAlgorithmWayPoints(distanceGraph,0, 3,wpl,avl);
+		int start = path.get(0);
+		assertEquals("Start Point",0,start);
+		int middle = path.get(1);
+		assertEquals("Middle",1,middle);
+		int destination = path.get(2);
+		assertEquals("End Point",3,destination);
+	}
+	@Test
+	public void test2() {
+		DijkstrasAlgorithmWayPoints daw = new DijkstrasAlgorithmWayPoints();
+		DijkstrasAlgorithm da = new DijkstrasAlgorithm();
+		int[][] distanceGraph = da.retriveSpecificLinkData(am.getLinkData(), "Distance");
+		ArrayList<Integer> wpl = new ArrayList<>();
+		ArrayList<Integer> path = daw.dijkstrasAlgorithmWayPoints(distanceGraph,0, 3,wpl,null);
+		int start = path.get(0);
+		assertEquals("Start Point",0,start);
+		int middle = path.get(1);
+		assertEquals("Middle",2,middle);
+		int destination = path.get(2);
+		assertEquals("End Point",3,destination);
+	}
+
+}
